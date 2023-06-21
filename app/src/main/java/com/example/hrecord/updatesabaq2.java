@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class updateSabaq2 extends AppCompatActivity {
+public class updatesabaq2 extends AppCompatActivity {
 
     EditText sabaqSurah, sabaqStart, sabaqEnd, sabqi, manzil;
     Button save;
@@ -33,3 +33,58 @@ public class updateSabaq2 extends AppCompatActivity {
         sabqi = findViewById(R.id.sabqiSurah);
         manzil = findViewById(R.id.manzilSurah);
         save = findViewById(R.id.save);
+
+
+        studentsDbHelper = new StudentsDbHelper(this);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String s1 = sabaqSurah.getText().toString();
+                String s2 = sabaqStart.getText().toString();
+                String s3 = sabaqEnd.getText().toString();
+                String s4 = sabqi.getText().toString();
+                String s5 = manzil.getText().toString();
+
+
+                int n1 = Integer.parseInt(s1);
+                int n2 = Integer.parseInt(s2);
+                int n3 = Integer.parseInt(s3);
+                int n4 = Integer.parseInt(s4);
+                int n5 = Integer.parseInt(s5);
+
+                if(n2 >= n3){
+                    Toast.makeText(updatesabaq2.this, "Starting ayat can not be greater than ending ayat", Toast.LENGTH_SHORT).show();
+                    sabaqStart.requestFocus();
+                    sabaqEnd.requestFocus();
+                }
+
+                if(n1 >= 114){
+                    Toast.makeText(updatesabaq2.this, "Enter valid surah number", Toast.LENGTH_SHORT).show();
+                    sabaqSurah.requestFocus();
+                }
+
+                if(n4 >= 114){
+                    Toast.makeText(updatesabaq2.this, "Enter valid surah number", Toast.LENGTH_SHORT).show();
+                    sabqi.requestFocus();
+                }
+
+                if(n5 >= 114){
+                    Toast.makeText(updatesabaq2.this, "Enter valid surah number", Toast.LENGTH_SHORT).show();
+                    manzil.requestFocus();
+                }
+
+
+                long chk = studentsDbHelper.insertAll(s1, s2, s3, s4, s5, rollno);
+
+                if(chk == -1){
+                    Toast.makeText(updatesabaq2.this, "Insertion Failed!!", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(updatesabaq2.this, "Inserted Successfully", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
+}
