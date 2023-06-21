@@ -16,3 +16,13 @@ public class UpdateSabaq extends AppCompatActivity {
     EditText rollno;
     Button proceed;
     boolean chk = false;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_updatesabaq);
+
+        Intent intent = getIntent();
+
+        rollno = findViewById(R.id.sabaqrollno);
+        proceed = findViewById(R.id.next);
