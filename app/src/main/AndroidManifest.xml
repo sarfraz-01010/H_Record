@@ -12,6 +12,9 @@
         android:theme="@style/Theme.HRecord"
         tools:targetApi="31">
         <activity
+            android:name=".updatesabaq2"
+            android:exported="false" />
+        <activity
             android:name=".updatesabaq"
             android:exported="false" />
         <activity
