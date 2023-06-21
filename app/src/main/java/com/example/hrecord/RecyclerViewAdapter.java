@@ -1,4 +1,5 @@
 package com.example.hrecord;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVH> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVH>{
+
     List<Student> students;
-    public class RecyclerViewAdapter(List<Student> students)
-    {
+
+    public RecyclerViewAdapter(List<Student> students){
         this.students = students;
     }
     @NonNull
@@ -25,5 +27,28 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return new MyVH(itemView);
     }
 
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyVH holder, int position) {
+        holder.data = students.get(position);
+        holder.studentName.setText(holder.data.getName());
+        holder.studentAge.setText(holder.data.getAge());
+    }
 
+    @Override
+    public int getItemCount() {
+        return students.size();
+    }
+
+    public class MyVH extends RecyclerView.ViewHolder {
+
+        TextView studentName;
+        TextView studentAge;
+
+        Student data;
+        public MyVH(@NonNull View itemView) {
+            super(itemView);
+            studentName = itemView.findViewById(R.id.textView5);
+            studentAge = itemView.findViewById(R.id.textView6);
+        }
+    }
 }

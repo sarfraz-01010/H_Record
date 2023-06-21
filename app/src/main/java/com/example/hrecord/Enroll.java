@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class EnrollStudent extends AppCompatActivity {
+public class Enroll extends AppCompatActivity {
     EditText name, age, rollno;
     Button enroll;
     TextView textView;
