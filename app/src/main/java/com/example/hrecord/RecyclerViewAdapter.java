@@ -12,5 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyVH> {
+    List<Student> students;
+    public class RecyclerViewAdapter(List<Student> students)
+    {
+        this.students = students;
+    }
+    @NonNull
+    @Override
 
 }
